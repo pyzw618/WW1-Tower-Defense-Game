@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://artil001"]
+
+[ext_resource type="Script" path="res://scripts/tower_base.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/towers/artillery_lv1.png" id="1_lv1"]
+[ext_resource type="Texture2D" path="res://assets/towers/artillery_lv2.png" id="2_lv2"]
+[ext_resource type="Texture2D" path="res://assets/towers/artillery_lv3.png" id="3_lv3"]
+[ext_resource type="Script" path="res://scripts/range_indicator.gd" id="4_rangescript"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_range"]
+radius = 350.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 30.0
+
+[node name="Artillery" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_script")
+tower_name = "Artillery"
+damage_levels = [40.0, 80.0, 130.0]
+fire_rate_levels = [1.8, 1.5, 1.2]
+range_levels = [350.0, 400.0, 460.0]
+upgrade_costs = [150, 200, 300]
+scale_factor = Vector2(0.14, 0.14)
+level_textures = Array[Texture2D]([ExtResource("1_lv1"), ExtResource("2_lv2"), ExtResource("3_lv3")])
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_lv1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")
+
+[node name="RangeArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea"]
+shape = SubResource("CircleShape2D_range")
+
+[node name="RangeIndicator" type="Node2D" parent="."]
+script = ExtResource("4_rangescript")
+
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 1.8
+one_shot = true

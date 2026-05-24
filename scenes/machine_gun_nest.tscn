@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://mgnest001"]
+
+[ext_resource type="Script" path="res://scripts/tower_base.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/towers/mg_nest_lv1.png" id="1_lv1"]
+[ext_resource type="Script" path="res://scripts/range_indicator.gd" id="2_rangescript"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_range"]
+radius = 250.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 28.0
+
+[node name="MachineGunNest" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_script")
+tower_name = "Machine Gun Nest"
+damage_levels = [15.0, 30.0, 50.0]
+fire_rate_levels = [0.5, 0.4, 0.3]
+range_levels = [250.0, 280.0, 320.0]
+upgrade_costs = [100, 150, 250]
+scale_factor = Vector2(0.15, 0.15)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_lv1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")
+
+[node name="RangeArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea"]
+shape = SubResource("CircleShape2D_range")
+
+[node name="RangeIndicator" type="Node2D" parent="."]
+script = ExtResource("2_rangescript")
+
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

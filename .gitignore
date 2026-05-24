@@ -1,0 +1,19 @@
+# Claude Code
+.claude/
+
+# Godot engine imports and cache
+.godot/
+
+# Build outputs
+*.exe
+*.pck
+*.console.exe
+*.x86_64
+*.sh
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# User notes / debug logs
+error.txt

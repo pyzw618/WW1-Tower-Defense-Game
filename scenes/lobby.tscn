@@ -1,0 +1,125 @@
+[gd_scene load_steps=3 format=3 uid="uid://lobby001"]
+
+[ext_resource type="Script" path="res://scripts/lobby.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://art/大厅背景图.png" id="2_bg"]
+
+[node name="Lobby" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 0
+mouse_filter = 2
+
+[node name="Buttons" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 100.0
+offset_right = 100.0
+offset_bottom = 220.0
+theme_override_constants/separation = 20
+
+[node name="StoryButton" type="Button" parent="CanvasLayer/Buttons"]
+text = "游戏背景"
+custom_minimum_size = Vector2(200, 50)
+theme_override_font_sizes/font_size = 24
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Buttons"]
+text = "开始游戏"
+custom_minimum_size = Vector2(200, 50)
+theme_override_font_sizes/font_size = 24
+
+[node name="StoryPanel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -370.0
+offset_right = 450.0
+offset_bottom = 370.0
+visible = false
+mouse_filter = 1
+
+[node name="Title" type="Label" parent="CanvasLayer/StoryPanel"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 15.0
+offset_right = 200.0
+offset_bottom = 55.0
+text = "游戏故事背景"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/StoryPanel"]
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = -20.0
+offset_bottom = -65.0
+
+[node name="Content" type="Label" parent="CanvasLayer/StoryPanel/ScrollContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "历史坐标：1914年9月，法兰西生死存亡之际
+
+1914年8月，第一次世界大战爆发。德军执行施里芬计划，以雷霆之势横扫比利时，直扑法国腹地。法国边境防线被迅速撕裂，巴黎危在旦夕。法国政府被迫南迁波尔多，整座光之城笼罩在沦陷的恐惧中。
+
+然而，德军最高统帅部犯下了致命错误——他们低估了法国人的韧性。
+
+法军总司令霞飞将军在溃败中敏锐地捕捉到一丝战机：德军第一集团军为追击法军，偏离了原定进军路线，暴露了右翼。霞飞果断下令巴黎卫戍部队与英国远征军联手，在马恩河一线发动全面反击。
+
+1914年9月5日至12日，马恩河会战爆发。超过两百万士兵在从巴黎近郊到凡尔登的广阔战线上殊死搏杀。法军士兵搭乘征用的巴黎出租车奔赴前线——这就是历史上著名的"马恩河奇迹"。
+
+这场会战粉碎了德军速战速决的美梦，也标志着西线堑壕战的开始。此后四年，法兰西的儿女们将用血肉之躯，在泥泞与铁丝网之间筑起一道永不陷落的长城。
+
+你的身份：马恩河前线的法军指挥官
+
+你是一位刚被紧急提拔的法军工兵上校，负责守卫马恩河畔的一段关键防线。
+
+你的任务不是冲锋陷阵，而是构筑与坚守。你的士兵们需要要塞、需要机枪、需要火炮——而这一切，都需要你来规划。
+
+巴黎的出租车运来的不只是增援，还有霞飞将军的亲笔命令：
+
+"法兰西的希望在你们身后。不准后退一步。守住马恩河，或者死在这里。""
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.9, 0.9, 0.85, 1)
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/StoryPanel"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -45.0
+offset_right = 50.0
+offset_bottom = -10.0
+text = "关闭"
+custom_minimum_size = Vector2(100, 35)

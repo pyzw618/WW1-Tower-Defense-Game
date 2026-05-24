@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://airplane001"]
+
+[ext_resource type="Script" path="res://scripts/enemy_base.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/enemies/airplane.png" id="1_airplane"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_airplane"]
+radius = 18.0
+
+[node name="Airplane" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_script")
+enemy_name = "Airplane"
+max_hp = 150.0
+speed = 170.0
+armor = 0.0
+kill_reward = 35
+lives_lost_on_leak = 2
+scale_factor = Vector2(0.13, 0.13)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_airplane")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_airplane")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+position = Vector2(0, -60)
+size = Vector2(36, 5)
+max_value = 280.0
+value = 280.0
+show_percentage = false
+modulate = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 1
+theme_override_constants/outline_size = 0
